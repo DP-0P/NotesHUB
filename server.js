@@ -43,7 +43,9 @@ MongoClinent.connect(mdbClient,{
 .then(client => {
     console.log('Connected to database');
     const db = client.db('testing');
+    const quotescollection = db.collection('quotes');
 })
+
 .catch(error => console.error(error));
 
 
