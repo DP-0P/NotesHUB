@@ -1,13 +1,16 @@
 console.log("fuck this shit")
 
-const bodyParser = require('body-parser');
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
+
 const MongoClinent = require('mongodb').MongoClient;
 
-app.use(bodyParser.urlencoded({
-    extended:true
-}));
+
+
+// app.use(bodyParser.urlencoded({
+//     extended:true
+// }));
 
 // const hbs = require('express-handlebars');
 
@@ -27,28 +30,20 @@ app.use(bodyParser.urlencoded({
 // }))
 app.listen(3000, () => console.log('Server is started on http://localhost:3000'));
 
-app.post('/quotes', (req, res) => {
-    console.log(req.body);
-  });
+let db;
 
-app.get('/',(req,res)=>{
-    res.sendFile(__dirname + '/upload.html');
-});
+// app.get('/',(req,res)=>{
+//     res.sendFile(__dirname + '/upload.html');
+// });
 
-const mdbClient = 'mongodb+srv://dp:deepak123456@cluster0.xfvxq.mongodb.net/test?retryWrites=true&w=majority;'
+const mdbClient = 'mongodb+srv://dp:deepak123456@cluster0.xfvxq.mongodb.net/first?retryWrites=true&w=majority;'
 
 MongoClinent.connect(mdbClient,{
     useUnifiedTopology:true
 })
 .then(client => {
     console.log('Connected to database');
-    const db = client.db('testing');
-    const quotescollection = db.collection('quotes');
+     db = client.db('first'); 
 })
-
-.catch(error => console.error(error));
-
-
-
 //nodemon server.js
 
