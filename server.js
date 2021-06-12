@@ -6,10 +6,104 @@ const morgan = require('morgan');
 const bodyparser = require('body-parser');
 const path = require('path');
 const { dirname } = require('path');
-
-const connectDB = require('./connection')
-
 const app = express();
+
+const mongoose = require('mongoose');
+
+// model.js
+
+var schema = new mongoose.Schema({
+    name : {
+        type : String,
+        required: true
+    },
+    email : {
+        type: String,
+        required: true,
+        unique: true
+    },
+    gender : String,
+    status : String
+})
+const Userdb = mongoose.model('userdb', schema);
+
+//model.js ends here
+
+//connect db starts here
+
+const mongoKey = 'mongodb+srv://admin:admin@cluster0.1upgx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+
+const connectDB = async () => {
+    try{
+        // mongodb connection string
+        const con = await mongoose.connect(mongoKey, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            useFindAndModify: false,
+            useCreateIndex: true
+        })
+
+        console.log(`MongoDB connected : ${con.connection.host}`);
+    }catch(err){
+        console.log(err);
+        process.exit(1);
+    }
+}
+
+//connection ends
+
+//router begins
+
+//router
+
+//controller begins
+
+Userdb.create = (req,res)=>{
+    // validate request
+    if(!req.body){
+        res.status(400).send({ message : "Content can not be emtpy!"});
+        return;
+    }
+
+    // new user
+    const user = new Userdb({
+        name : req.body.name,
+        email : req.body.email,
+        gender: req.body.gender,
+        status : req.body.status
+    })
+
+    // save user in the database
+    user
+        .save(user)
+        .then(data => {
+            //res.send(data)
+            res.redirect('/add-user');
+        })
+        .catch(err =>{
+            res.status(500).send({
+                message : err.message || "Some error occurred while creating a create operation"
+            });
+        });
+
+}
+
+Userdb.find = (req,res) => {
+
+}
+
+Userdb.update = (req,res) => {
+
+}
+
+Userdb.delete = (req,res) => {
+
+}
+
+
+
+//controller ends
+
 
 dotenv.config({path:'config.env'});
 
@@ -40,10 +134,15 @@ app.get('/update-User',(req,res) => {
     res.render('updateUser');
 });
 
+app.post('/api/users',Userdb.create);
+app.get('/api/users',Userdb.find);
+app.put('/api/users/:id',Userdb.update);
+app.delete('/api/users/:id',Userdb.delete);
+
 // app.use('/',require('./server/routes/router'));
 
 app.listen(PORT, () => {
-    console.log(`server is running on http://localhost:${PORT}`);
+    console.log(`server is running on http://localhost:3000`);
 });
 
 // const bodyParser = require('body-parser');
