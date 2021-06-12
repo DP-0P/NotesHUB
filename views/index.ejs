@@ -5,15 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Testing</title>
-    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="css/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
-
     <header id="header">
       <nav>
         <div class="container">
           <div class="text-center">
-            <a href="/">Crazy Crazy</a>
+            <a href="/" class="nav-brand text-dark">Crazy Crazy</a>
           </div>
         </div>
       </nav>
@@ -23,7 +29,10 @@
       <div class="container">
         <div class="box-nav d-flex-jstify-between">
           <a href="/add-user" class="border-shadow">
-            <span class="text-gradient"> New User </span>
+            <span class="text-gradient">
+              New User
+              <i class="fas fa-user"></i>
+            </span>
           </a>
         </div>
 
@@ -34,11 +43,12 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Mail</th>
+                <th>Gender</th>
                 <th>Status</th>
                 <th>Action</th>
               </tr>
             </thead>
-            
+
             <tbody>
               <tr>
                 <td>1</td>
@@ -47,14 +57,14 @@
                 <td>Male</td>
                 <td>Active</td>
                 <td>
-                  <a href="#" class="btn border-shadow update">
+                  <a href="/update-user" class="btn border-shadow update">
                     <span class="text-gradient">
-                      <i class="fas fa-pencil-alt">pencil here</i>
+                      <i class="fas fa-pencil-alt"></i>
                     </span>
                   </a>
                   <a href="#" class="btn border-shadow delete">
                     <span class="text-gradient">
-                      <i class="fas fa-times">cross here</i>
+                      <i class="fas fa-times"></i>
                     </span>
                   </a>
                 </td>

@@ -28,6 +28,14 @@ app.get('/',(req,res) => {
     res.render('index');
 });
 
+app.get('/add-User',(req,res) => {
+    res.render('addUser');
+});
+
+app.get('/update-User',(req,res) => {
+    res.render('updateUser');
+});
+
 app.listen(PORT, () => {
     console.log(`server is running on http://localhost:${PORT}`);
 });
