@@ -7,13 +7,17 @@ const bodyparser = require('body-parser');
 const path = require('path');
 const { dirname } = require('path');
 
+const connectDB = require('./connection')
+
 const app = express();
 
 dotenv.config({path:'config.env'});
 
-const PORT = process.env.PORT || 8080;
+const PORT = 3000;
 
 app.use(morgan('tiny'));
+
+connectDB();
 
 app.use(bodyparser.urlencoded({extended:true}));
 
@@ -35,6 +39,8 @@ app.get('/add-User',(req,res) => {
 app.get('/update-User',(req,res) => {
     res.render('updateUser');
 });
+
+// app.use('/',require('./server/routes/router'));
 
 app.listen(PORT, () => {
     console.log(`server is running on http://localhost:${PORT}`);
