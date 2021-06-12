@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Testing</title>
+    <link rel="stylesheet" href="../assets/css/index.css">
+  </head>
+  <body>
+
+    <header id="header">
+      <nav>
+        <div class="container">
+          <div class="text-center">
+            <a href="/">Crazy Crazy</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main id="site-main">
+      <div class="container">
+        <div class="box-nav d-flex-jstify-between">
+          <a href="/add-user" class="border-shadow">
+            <span class="text-gradient"> New User </span>
+          </a>
+        </div>
+
+        <form action="/" method="POST">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Mail</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Username</td>
+                <td>ExampleMail</td>
+                <td>Male</td>
+                <td>Active</td>
+                <td>
+                  <a href="#" class="btn border-shadow update">
+                    <span class="text-gradient">
+                      <i class="fas fa-pencil-alt">pencil here</i>
+                    </span>
+                  </a>
+                  <a href="#" class="btn border-shadow delete">
+                    <span class="text-gradient">
+                      <i class="fas fa-times">cross here</i>
+                    </span>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
