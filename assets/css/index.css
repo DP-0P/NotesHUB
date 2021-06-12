@@ -202,3 +202,21 @@ table {
     background: rebeccapurple;
 }
 
+#update_user .form-group .btn,
+#add_user .form-group .btn{
+    width: 100%;
+    padding: .9cm 1cm;
+    background-color: aqua;
+    border: none;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 1cm;
+    cursor: pointer;
+    border-radius: 2cm;
+    margin: .5cm 0;
+}
+
+#update_user .form-group .btn:hover,
+#add_user .form-group .btn:hover{
+    background-color: darkgoldenrod;
+    color: brown;
+}
