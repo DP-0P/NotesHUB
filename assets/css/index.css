@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow&family=PT+Sans&display=swap');
+
 *{
     padding: 0;
     margin: 0;
@@ -6,7 +8,7 @@
 
 a{
     text-decoration: none;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'PT sans',sans-serif;
 }
 
 .container{
@@ -33,7 +35,7 @@ a{
 }
 
 .border-shadow{
-    border: 1px solid;
+    border: 1px solid greenyellow;
     box-shadow: 1px 3px 10px rgb(245, 50, 50);
 }
 
@@ -50,24 +52,24 @@ a{
 }
 
 .text-gradient{
-    background:linear-gradient(to right, purple);
+    background:linear-gradient(to right, purple greenyellow);
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+    -webkit-text-fill-color: opaque;
+} 
 
 #header nav{
     background-color: rgb(42, 134, 165);
-    padding: 1cm 0;
+    padding: 0.5cm 0;
     width: 100%;
 }
 
 #site-main{
-    margin-top: 6cm;
+    margin-top: 2cm;
 }
 
 #site-main .container .box-nav > a {
-    font-size: 1cm;
+    font-size: 0.5cm;
     padding: .5cm 1cm;
 }
 
@@ -106,3 +108,22 @@ table{
     background-color: rgb(0, 0, 0);
     border-color: black;
 }
+
+/* @media only screen and (max-width: 1024px){
+    table, thead, tbody, th, td, tr{
+        display: none;
+    }
+
+    thead tr{
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr{border: 1px solid skyblue}
+
+    td{
+        border: none;
+        position: relative;
+    }
+} */
