@@ -24,7 +24,30 @@ var schema = new mongoose.Schema({
     },
     gender : String,
     status : String
-})
+},
+)
+
+// const userSchema = mongoose.Schema({ 
+//     email: String, 
+//     username: String, 
+//     password: String, 
+//     googleId: String, 
+//     avatar_url: String, 
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const Userdb = mongoose.model('userdb', schema);
 
 //model.js ends here
@@ -71,7 +94,7 @@ Userdb.create = (req,res)=>{
         email : req.body.email,
         gender: req.body.gender,
         status : req.body.status
-    })
+    });
 
     // save user in the database
     user
@@ -178,8 +201,18 @@ app.use('/css',express.static(path.resolve(__dirname,'assets/css')));
 app.use('/img',express.static(path.resolve(__dirname,'assets/img')));
 app.use('/js',express.static(path.resolve(__dirname,'assets/js')));
 
+
+const axios = require('axios');
+
 app.get('/',(req,res) => {
-    res.render('index');
+    axios.get('http://localhost:3000/api/users')
+        .then(function(response){
+            res.render('index', { users : response.data });
+            console.log(response);
+        })
+        .catch(err =>{
+            res.send(err);
+        })
 });
 
 app.get('/add-User',(req,res) => {
@@ -194,6 +227,8 @@ app.post('/api/users',Userdb.create);
 app.get('/api/users',Userdb.findUser);
 app.put('/api/users/:id',Userdb.update);
 app.delete('/api/users/:id',Userdb.delete);
+
+
 
 // app.use('/',require('./server/routes/router'));
 
@@ -225,7 +260,7 @@ app.listen(PORT, () => {
 //     extname:'hbs',
 //     defaultView:'default',
 //     layoutsDir:path.join(__dirname,'views'),
-//     partialsDir:path.join(__dirname,'views//partials')
+//     partialsDir:path.join(__dirname,'views//partials') 
 // }))
 // app.listen(3000, () => console.log('Server is started on http://localhost:3000'));
 
